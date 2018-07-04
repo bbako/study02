@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.nuritelecom.mapper.ReplyMapper">
+
+	<insert id="create" parameterType="com.nuritelecom.domain.ReplyVO">
+		INSERT INTO tbl_reply(bno, replytext, replyer) VALUES (#{bno}, #{replytext}, #{replyer})
+	</insert>
+
+	<update id="update" parameterType="com.nuritelecom.domain.ReplyVO">
+		update tbl_reply set bno= #{bno}, replytext=#{replytext}, replyer = #{replyer} where rno = #{rno}
+	</update>
+
+	<delete id="delete">
+		delete from tbl_reply where rno = #{rno}
+	</delete>
+	
+	<select id="listAll" resultType="com.nuritelecom.domain.ReplyVO">
+		<![CDATA[
+			select * from tbl_reply where rno>0 and bno = #{bno}
+			order by rno desc, regdate desc
+		]]>
+		
+	</select>
+
+</mapper>
