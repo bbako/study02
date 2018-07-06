@@ -42,11 +42,12 @@
 		</dependency>
 		
 		<!-- MySQL -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>6.0.5</version>
-        </dependency>
+       <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		    <version>8.0.11</version>
+		</dependency>
  
         <!-- MyBatis 3.4.1 -->
         <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->

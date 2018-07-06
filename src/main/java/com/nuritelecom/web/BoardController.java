@@ -1,16 +1,22 @@
 package com.nuritelecom.web;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.nuritelecom.domain.BoardVO;
 import com.nuritelecom.service.BoardService;
@@ -94,6 +100,25 @@ public class BoardController {
 		service.modify(vo);
 		
 		return "redirect:/board/listAll";
+	}
+	
+	@PostMapping("/listCall")
+	public  ResponseEntity<Map<String, Object>> listCall(@RequestParam("page") Integer page ){
+		
+		ResponseEntity<Map<String, Object>> entity = null;
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		int total = service.total();
+		
+		List<BoardVO> list = service.listAll((page-1)*10);
+		
+		map.put("list", list);
+		
+		entity = new ResponseEntity<Map<String,Object>>(map, HttpStatus.OK);
+		
+		return entity;
+			
 	}
 	
 	
