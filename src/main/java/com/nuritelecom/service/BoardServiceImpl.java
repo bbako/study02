@@ -40,4 +40,9 @@ public class BoardServiceImpl implements BoardService {
 		return dao.listAll(page);
 	}
 
+	@Override
+	public int total() {
+		return dao.total();
+	}
+
 }

@@ -44,4 +44,9 @@ public class BoardDAOImpl implements BoardDAO {
 		return session.selectList(namespace + ".listAll", page);
 	}
 
+	@Override
+	public int total() {
+		return session.se;
+	}
+
 }

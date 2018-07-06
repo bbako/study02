@@ -114,6 +114,7 @@ public class BoardController {
 		List<BoardVO> list = service.listAll((page-1)*10);
 		
 		map.put("list", list);
+		map.put("total", total);
 		
 		entity = new ResponseEntity<Map<String,Object>>(map, HttpStatus.OK);
 		
