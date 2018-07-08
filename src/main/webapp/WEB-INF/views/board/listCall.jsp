@@ -21,117 +21,6 @@
 <body class="hold-transition sidebar-mini">
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
 <div class="wrapper">
-<<<<<<< Upstream, based on branch 'master' of https://github.com/bbako/study02.git
-=======
-
-    <!-- SEARCH FORM -->
-    <form class="form-inline ml-3">
-      <div class="input-group input-group-sm">
-        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-        <div class="input-group-append">
-          <button class="btn btn-navbar" type="submit">
-            <i class="fa fa-search"></i>
-          </button>
-        </div>
-      </div>
-    </form>
-
-    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
-      <!-- Messages Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="fa fa-comments-o"></i>
-          <span class="badge badge-danger navbar-badge">3</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Brad Diesel
-                  <span class="float-right text-sm text-danger"><i class="fa fa-star"></i></span>
-                </h3>
-                <p class="text-sm">Call me whenever you can...</p>
-                <p class="text-sm text-muted"><i class="fa fa-clock-o mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  John Pierce
-                  <span class="float-right text-sm text-muted"><i class="fa fa-star"></i></span>
-                </h3>
-                <p class="text-sm">I got your message bro</p>
-                <p class="text-sm text-muted"><i class="fa fa-clock-o mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Nora Silvester
-                  <span class="float-right text-sm text-warning"><i class="fa fa-star"></i></span>
-                </h3>
-                <p class="text-sm">The subject goes here</p>
-                <p class="text-sm text-muted"><i class="fa fa-clock-o mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-        </div>
-      </li>
-      <!-- Notifications Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="fa fa-bell-o"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">15 Notifications</span>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fa fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fa fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fa fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
-          <i class="fa fa-th-large"></i>
-        </a>
-      </li>
-    </ul>
-  </nav>
-  <!-- /.navbar -->
->>>>>>> 035d16f 0708
 
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -492,44 +381,33 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <table id="example2" class="table table-bordered table-hover">
                 
-                ${total}
-		            <tr>
-		    			<th>bno</th>
-		    			<th>title</th>
-		    			<th>content</th>
-		    			<th>writer</th>
-		    			<th>regdate</th>
-		    			<th>viewcnt</th>
-		    		</tr>
-		    		
-		    		<c:forEach items="${list}" var="board">
-		    		
-		    		<tr>
-		    			<th>${board.bno}</th>
-		    			<th><a href="/board/read?bno=${board.bno}">${board.title}</a></th>
-		    			<th>${board.content}</th>
-		    			<th>${board.writer}</th>
-		    			<th>${board.regdate}</th>
-		    			<th>${board.viewcnt}</th>
-		    		</tr>
-		    		
-		    		</c:forEach>
-		    		
-                
-              </table>
+                <p id="total"></p> 
+              <table class="table table-hover table-condensed table-striped">
+				<thead>
+					<tr>
+						<th class="text-center">No</th>
+						<th class="text-center">Title</th>
+						<th class="text-center">content</th>
+						<th class="text-center">Writer</th>
+						<th class="text-center">Date</th>
+						<th class="text-center">Views</th>
+					</tr>
+				</thead>
+				<tbody id="showlist">
+					
+				</tbody>
+			</table>
               <div>
 
 				<ul class="pagination">
 				
 				</ul>
-	
+			
+			</div>
             </div>
             <!-- /.card-body -->
           </div>
-
-          <!-- /.card -->
         </div>
         <!-- /.col -->
       </div>
@@ -555,7 +433,6 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="../../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -564,6 +441,7 @@
 <script src="../../plugins/datatables/dataTables.bootstrap4.min.js"></script>
 <!-- SlimScroll -->
 <script src="../../plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <!-- FastClick -->
 <script src="../../plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
@@ -572,24 +450,24 @@
 <script src="../../dist/js/demo.js"></script>
 <!-- page script -->
 <script>
-
-$( document ).ready(function() {
-    console.log( "ready!" );
-    
-    var page = 1;
+$(document).ready(function(e) {
+	var page = 1;
 	var key = "";
 	
 	function makeTable(list){
+		
+		console.log(list);
 		 
 		 var str="";
 		 
 		 $.each(list, function(index, value) {
 			 
-			 str+='<tr><td class="text-center"><a href="/showOne?oneTitleShow='+value.seq_id+'">'+value.seq_id+'</a></td>'
-			 		+'<td class="text-center">'+value.board_title+'</td>'
-					+'<td class="text-center">'+value.board_writer+'</td>'
-					+'<td class="text-center">'+value.board_datetime+'</td>'
-					+'<td class="text-center">'+value.board_viewcounter+'</td></tr>'
+			 str+='<tr><td class="text-center"><a>'+value.bno+'</a></td>'
+			 		+'<td class="text-center">'+value.title+'</td>'
+			 		+'<td class="text-center">'+value.content+'</td>'
+					+'<td class="text-center">'+value.writer+'</td>'
+					+'<td class="text-center">'+value.regdate+'</td>'
+					+'<td class="text-center">'+value.viewcnt+'</td></tr>'
 					
 			}); 
 		 
@@ -599,75 +477,77 @@ $( document ).ready(function() {
 	
 	init_list(page);
 	
-	function init_list(page, key){
+	function init_list(page){
 		
 		console.log("start~~!~!~!~!~")
 		 				
 		
 		$.ajax({
 			  type: "POST",
-	    	  url: "/listCall",
+	    	  url: "/board/listCall",
 	    	  dataType: 'json',	 	
 	    	  data : {
 	 			 	
-		        	page : page
-		        	
+		        	page : page,
+		  
 		        	
 		        },
 		        
 	    	  success: function(re){
 	    		
 	    		makeTable(re.list);
-	    		printPageing(re.pageMaker);
+	    		printPageing(re.total);
 	    		
 	    		
 	    	  } 
-             
+	         
 		 });
 	}
 	
 	
-	function printPageing(pageMaker){
+	function printPageing(total){
+		
+		var str = "total = " + total;
+	
+		$("#total").html(str);
 		
 		var str = "";
 		
-		if(pageMaker.prev){
+		/* if(pageMaker.prev){
 			 
 			 str +="<li ><a href='"+(pageMaker.start-1)+"'> << </a></li>";
 			 
-		 }
+		 } */
 		
-		for(var i=pageMaker.start, len = pageMaker.end; i <= len; i++){
+		for(var i=1, len = 10; i <= len; i++){
+/* 		for(var i=pageMaker.start, len = pageMaker.end; i <= len; i++){ */
 			
-			var bold = pageMaker.current == i?"class='active'":'';
+			/* var bold = pageMaker.current == i?"class='active'":''; */
 			
-			str += "<li "+bold+"><a href = '"+i+"'>"+i+"&nbsp"+"</a></li>";
+			str += "<li><a href = '"+i+"'>"+i+"&nbsp"+"</a></li>";
+/* 			str += "<li "+bold+"><a href = '"+i+"'>"+i+"&nbsp"+"</a></li>"; */
 			
 		}
 		
-		if(pageMaker.next){
+		/* if(pageMaker.next){
 			
 			str +="<li ><a href='"+(pageMaker.end+1)+"'> >> </a></li>";
-		}
+		} */
 		
-		$(".pagination").html(str);
+		$(".pagination").html(str); 
 		
 	}
-	
 	
 	$(".pagination").on("click","a",function(e){
 		
 		e.preventDefault();
 		
-		var page = $(this).attr('href');
-				
-		init_list(page,key);
+		page = $(this).attr('href');
+		
+		init_list(page);
 		
 	})
-	
-    
-});
-
+})
 </script>
 </body>
 </html>

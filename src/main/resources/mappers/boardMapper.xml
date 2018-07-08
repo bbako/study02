@@ -19,12 +19,16 @@
 		delete from tbl_board where bno = #{bno}
 	</delete>
 	
-	<select id="listAll" resultType="com.nuritelecom.domain.BoardVO">
+	<select id="listAll" parameterType="int" resultType="com.nuritelecom.domain.BoardVO">
 		<![CDATA[
 			select * from tbl_board where bno>0
-			order by bno desc, regdate desc
+			order by bno desc, regdate desc limit #{page*20} , 20
 		]]>
 		
+	</select>
+	
+	<select id="total" resultType="int">
+		select count(*) from tbl_board
 	</select>
 
 </mapper>

@@ -64,13 +64,13 @@ public class BoardController {
 		return "board/success";
 	}
 	
-	@GetMapping("/listAll")
+	/*@GetMapping("/listAll")
 	public void listAll(Model model) throws Exception {
 		
 		logger.info("listAll get");
 		model.addAttribute("list", service.listAll());
 		
-	}
+	}*/
 	@GetMapping("/read")
 	public void read(int bno,Model model) throws Exception {
 		
@@ -102,8 +102,16 @@ public class BoardController {
 		return "redirect:/board/listAll";
 	}
 	
+	@GetMapping("/listCall")
+	public void listAll(Model model) throws Exception {
+		
+	}
+	
 	@PostMapping("/listCall")
-	public  ResponseEntity<Map<String, Object>> listCall(@RequestParam("page") Integer page ){
+	public  ResponseEntity<Map<String, Object>> listCall(@RequestParam("page") Integer page ) throws Exception{
+		
+		logger.info("page = " + page);
+		logger.info("list call post");
 		
 		ResponseEntity<Map<String, Object>> entity = null;
 		

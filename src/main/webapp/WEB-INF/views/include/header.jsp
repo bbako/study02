@@ -225,7 +225,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/board/listAll" class="nav-link">
+                <a href="/board/listCall" class="nav-link">
                 	<i class="nav-icon fa fa-edit"></i>
                   	<p>리스트</p>
                 </a>
