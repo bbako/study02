@@ -42,7 +42,7 @@ public class MySQLConnectionTest {
 			
 			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 			
-			List<BoardVO> list = dao.listAll();
+			List<BoardVO> list = dao.listAll(1);
 			
 			System.out.println(list.toString());
 		} catch (Exception e) {
