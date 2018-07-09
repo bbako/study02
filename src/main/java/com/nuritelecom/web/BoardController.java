@@ -119,7 +119,7 @@ public class BoardController {
 		
 		int total = service.total();
 		
-		List<BoardVO> list = service.listAll((page-1)*10);
+		List<BoardVO> list = service.listAll((page-1)*20);
 		
 		map.put("list", list);
 		map.put("total", total);
