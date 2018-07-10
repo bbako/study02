@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.nuritelecom.mapper.MemberMapper">
+
+	<select id="read" parameterType="Map" resultType="MemberVO">
+		select * from tbl_member where mid=#{mid} and mpw = md5(#{mpw})
+	</select>
+	
+	<select id="checkSessionKey" resultType="MemberVO">
+		select * from tbl_member where sessionKey = #{value} and sessionlimit > now()	
+	</select>
+	
+	<update id="keepLogin" parameterType="MemberVO">
+		update tbl_member set sessionKey = #{sessionID}, sessionLimit = #{sessionLimit} where mid = #{mid}
+	</update>
+
+</mapper>

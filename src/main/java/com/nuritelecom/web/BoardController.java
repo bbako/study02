@@ -1,10 +1,12 @@
 package com.nuritelecom.web;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,9 +19,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.nuritelecom.domain.BoardVO;
+import com.nuritelecom.domain.MemberVO;
 import com.nuritelecom.service.BoardService;
+import com.nuritelecom.service.MemberService;
 
 /**
  * Handles requests for the application home page.
@@ -32,6 +37,8 @@ public class BoardController {
 
 	@Inject
 	private BoardService service;
+	@Inject
+	private MemberService mservice;
 
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public void indexGet(BoardVO board, Model model) throws Exception {
@@ -55,11 +62,12 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String registerPost(BoardVO board, Model model) throws Exception {
+	public String registerPost(BoardVO board, Model model, MultipartHttpServletRequest multi) throws Exception {
 
 		logger.info("regi......post");
 		logger.info(board.toString());
-		service.regist(board);
+		
+		service.regist(board , multi);
 		model.addAttribute("result", "success");
 		return "board/success";
 	}
@@ -129,6 +137,13 @@ public class BoardController {
 		return entity;
 			
 	}
+	
+	@GetMapping("/login")
+	public void login() {
+		
+	}
+	
+	
 	
 	
 

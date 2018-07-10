@@ -5,8 +5,10 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.nuritelecom.domain.BoardVO;
+import com.nuritelecom.domain.FileVO;
 import com.nuritelecom.persistence.BoardDAO;
 
 @Service
@@ -16,8 +18,8 @@ public class BoardServiceImpl implements BoardService {
 	private BoardDAO dao;
 
 	@Override
-	public void regist(BoardVO board) throws Exception {
-		dao.create(board);
+	public void regist(BoardVO board, MultipartHttpServletRequest request) throws Exception {
+		dao.create(board,request);
 	}
 
 	@Override
@@ -43,6 +45,10 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int total() {
 		return dao.total();
+	}
+	@Override
+	public int insertFile(FileVO vo) {
+		return dao.insertFile(vo);
 	}
 
 }
