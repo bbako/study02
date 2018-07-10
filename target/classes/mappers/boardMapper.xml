@@ -3,15 +3,18 @@
   
 <mapper namespace="com.nuritelecom.mapper.BoardMapper">
 
-	<insert id="create" parameterType="com.nuritelecom.domain.BoardVO">
-		INSERT INTO tbl_board(title, content, writer) VALUES (#{title}, #{content}, #{writer});
+	<insert id="create" parameterType="BoardVO">
+		INSERT INTO tbl_board(title, content, writer) VALUES (#{title}, #{content}, #{writer})
+		<selectKey resultType="int" keyProperty="bno" order="AFTER">
+	        SELECT LAST_INSERT_ID()
+	    </selectKey>  
 	</insert>
 
-	<select id="read" resultType="com.nuritelecom.domain.BoardVO">
+	<select id="read" resultType="BoardVO">
 		select * from tbl_board where bno = #{bno}
 	</select>
 
-	<update id="update" parameterType="com.nuritelecom.domain.BoardVO">
+	<update id="update" parameterType="BoardVO">
 		update tbl_board set title= #{title}, content=#{content}, writer = #{writer} where bno = #{bno}
 	</update>
 
@@ -19,10 +22,17 @@
 		delete from tbl_board where bno = #{bno}
 	</delete>
 	
-	<select id="listAll" parameterType="int" resultType="com.nuritelecom.domain.BoardVO">
+	<select id="listAll" parameterType="int" resultType="BoardVO">
 		<![CDATA[
-			select * from tbl_board where bno>0
-			order by bno desc, regdate desc limit #{page} , 20
+			SELECT 
+			    a.*, ifnull(GROUP_CONCAT(b.original_file_name, ' '),'') files
+			FROM
+			    tbl_board a
+			        LEFT JOIN
+			    tb_file b ON a.bno = b.bno
+			GROUP BY a.bno
+			ORDER BY a.bno DESC
+			LIMIT #{page}  , 20
 		]]>
 		
 	</select>
@@ -30,5 +40,26 @@
 	<select id="total" resultType="int">
 		select count(*) from tbl_board
 	</select>
+	
+	<insert id="insertFile" parameterType="FileVO">
+    <![CDATA[
+        INSERT INTO TB_FILE
+        (
+            bno,
+            ORIGINAL_FILE_NAME,
+            STORED_FILE_NAME,
+            FILE_SIZE,
+            CREA_ID
+        )
+        VALUES
+        (
+            #{bno},
+            #{originalFileName},
+            #{storedFileName},
+            #{fileSize},
+            #{creaId}
+        )
+    ]]>
+</insert>
 
 </mapper>

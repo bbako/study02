@@ -54,7 +54,7 @@ public class MySQLConnectionTest {
 	public void insert() {
 		try {
 			
-			System.out.println("´õ¹Ì");
+			System.out.println("ï¿½ï¿½ï¿½ï¿½");
 
 			for (int i = 0 ; i <2000 ; i++) {
 				
@@ -63,7 +63,7 @@ public class MySQLConnectionTest {
 				vo.setTitle("title0"+i);
 				vo.setContent("content0"+i);
 				vo.setWriter("writer0" +i);
-				dao.create(vo);;
+				dao.create2(vo);;
 			}
 			
 		} catch (Exception e) {

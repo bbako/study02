@@ -30,7 +30,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form role="form" method="post">
+              <form role="form" method="post" enctype="multipart/form-data">
                 <div class="card-body">
 	                  <div class="form-group">
 	                    <label for="exampleInputEmail1">제목</label>
@@ -44,6 +44,10 @@
 		 				<label>내용</label>
 		                <textarea name="content" class="form-control" rows="11" placeholder="내용을입력하세요"></textarea>
 					</div>
+					 <input type="file" id="fileUp" name="fileUp"/><br/><br/>
+      				  <input type="file" id="fileUp2" name="fileUp2"/><br/><br/>
+
+
 
                 </div>
                 <!-- /.card-body -->
@@ -156,6 +160,27 @@
     $('.timepicker').timepicker({
       showInputs: false
     })
+    
+     function fileSubmit() {
+        var formData = new FormData($("#fileForm")[0]);
+        $.ajax({
+            type : 'post',
+            url : '/board/register',
+            data : formData,
+            processData : false,
+            contentType : false,
+            success : function(html) {
+                alert("파일 업로드하였습니다.");
+            },
+            error : function(error) {
+                alert("파일 업로드에 실패하였습니다.");
+                console.log(error);
+                console.log(error.status);
+            }
+        });
+    }
+
+
   })
 </script>
 </body>

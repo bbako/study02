@@ -41,6 +41,7 @@
 						<th class="text-center">Title</th>
 						<th class="text-center">content</th>
 						<th class="text-center">Writer</th>
+						<th class="text-center">Files</th>
 						<th class="text-center">Date</th>
 						<th class="text-center">Views</th>
 					</tr>
@@ -85,9 +86,10 @@ $(document).ready(function(e) {
 		 $.each(list, function(index, value) {
 			 
 			 str+='<tr><td class="text-center"><a>'+value.bno+'</a></td>'
-			 		+'<td class="text-center">'+value.title+'</td>'
+			 		+'<td class="text-center"><a href = "/board/read?bno='+value.bno+'">'+value.title+'</td>'
 			 		+'<td class="text-center">'+value.content+'</td>'
 					+'<td class="text-center">'+value.writer+'</td>'
+					+'<td class="text-center">'+value.files+'</td>'
 					+'<td class="text-center">'+value.regdate+'</td>'
 					+'<td class="text-center">'+value.viewcnt+'</td></tr>'
 					
