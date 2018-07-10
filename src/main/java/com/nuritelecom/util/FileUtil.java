@@ -58,8 +58,10 @@ public class FileUtil {
              fvo.setFileSize(mFile.getSize());
              fvo.setOriginalFileName(fileName);
              fvo.setStoredFileName(newFileName);
-             
-             boardService.insertFile(fvo);
+             if(fileName != null && fileName != "") {
+            	 
+            	 boardService.insertFile(fvo);
+             }
               
              try {
                  mFile.transferTo(new File(path+newFileName));

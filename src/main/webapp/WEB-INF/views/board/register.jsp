@@ -171,6 +171,8 @@
             contentType : false,
             success : function(html) {
                 alert("파일 업로드하였습니다.");
+                ${"#fileup"}.val('');
+                ${"#fileup2"}.val('');
             },
             error : function(error) {
                 alert("파일 업로드에 실패하였습니다.");

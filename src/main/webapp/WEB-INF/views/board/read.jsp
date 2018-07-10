@@ -23,7 +23,6 @@
 
     <!-- Main content -->
     <section class="content">
-    
     	<table class="table table-bordered">
     		<tr>
     			<th> bno</th>
@@ -45,14 +44,21 @@
     		
     		
     	</table>
+    	<div id="uploadList"></div>
+    	<ui>
+	    	<c:forEach var="item" items="${fileList}">
+			    <li class='list'><img class='img' src='/display?fName=${item}'></li>
+<%-- 			    <li class='list'><img class='img' src='/display?fName='+${item}></li> --%>
+			</c:forEach>
+		</ui>
     
 		<form id="f1" method="post">
 			<input type="hidden" name="bno" value="${one.bno}">
-		</form>    
+		</form>
     
     <button id="modify" type="submit">modify</button>
     <button id="remove" type="submit">remove</button>
-    <button id="list" type="submit">list All</button>
+    <button id="list" onclick="location.href='/board/listCall'">list All</button>
     
     </section>
     <!-- /.content -->
@@ -102,13 +108,9 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		
-		console.log("gogo???")
-		
 		var formObj = $("#f1");
 		
 		$("#modify").on("click", function() {
-			
-			console.log("click???")
 			
 			formObj.attr("action","/board/modify")
 			formObj.attr("method","get")
@@ -117,9 +119,6 @@
 		})
 		
 	})
-		
-	
-
 </script>
 </body>
 </html>

@@ -1,12 +1,11 @@
 package com.nuritelecom.web;
 
-import java.util.Date;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.nuritelecom.domain.BoardVO;
-import com.nuritelecom.domain.MemberVO;
 import com.nuritelecom.service.BoardService;
 import com.nuritelecom.service.MemberService;
 
@@ -42,10 +40,6 @@ public class BoardController {
 
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public void indexGet(BoardVO board, Model model) throws Exception {
-		logger.info("hi!!!!");
-		logger.info("hi!!!!");
-		logger.info("hi!!!!");
-		logger.info("hi!!!!");
 		logger.info("hi!!!!");
 	}
 
@@ -88,7 +82,13 @@ public class BoardController {
 		
 		logger.info("read one");
 		
-		model.addAttribute("one", service.read(bno));
+		BoardVO vo = service.read(bno);
+		String sfname = vo.getSfname();
+		String[] sfnameEach = sfname.split("\\|");
+		List<String> wordList = Arrays.asList(sfnameEach);
+		
+		model.addAttribute("one", vo);
+		model.addAttribute("fileList", wordList);
 		
 	}
 	

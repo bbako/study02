@@ -11,7 +11,15 @@
 	</insert>
 
 	<select id="read" resultType="BoardVO">
-		select * from tbl_board where bno = #{bno}
+		SELECT 
+		    a.*, GROUP_CONCAT(b.stored_file_name separator '|') sfname
+		FROM
+		    tbl_board a
+        LEFT JOIN
+		    tb_file b ON a.bno = b.bno
+		WHERE
+		    b.bno = #{bno}
+		GROUP BY b.bno
 	</select>
 
 	<update id="update" parameterType="BoardVO">
@@ -25,7 +33,7 @@
 	<select id="listAll" parameterType="int" resultType="BoardVO">
 		<![CDATA[
 			SELECT 
-			    a.*, ifnull(GROUP_CONCAT(b.original_file_name, ' '),'') files
+			    a.*, ifnull(GROUP_CONCAT(b.original_file_name, '|'),'') files
 			FROM
 			    tbl_board a
 			        LEFT JOIN
