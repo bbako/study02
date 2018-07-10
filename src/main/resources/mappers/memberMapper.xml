@@ -12,7 +12,7 @@
 	</select>
 	
 	<update id="keepLogin" parameterType="MemberVO">
-		update tbl_member set sessionKey = #{sessionID}, sessionLimit = #{sessionLimit} where mid = #{mid}
+		update tbl_member set sessionKey = #{sessionKey}, sessionLimit = #{sessionLimit} where mid = #{mid}
 	</update>
 
 </mapper>

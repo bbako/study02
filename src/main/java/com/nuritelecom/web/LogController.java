@@ -45,21 +45,23 @@ public class LogController {
 	}
 	
 	@PostMapping("/loginPost")
-	public void loginPOST(MemberVO dto,HttpSession session, Model model) throws Exception{
+	public void loginPOST(MemberVO vo,HttpSession session, Model model) throws Exception{
 		
 		logger.info("==============================================================================");
 		logger.info("Login Post !!!!!!!!");
-		logger.info(dto.toString());
+		logger.info(vo.toString());
 		
-		MemberVO vo = mservice.read(dto);
+		/*MemberVO vo = mservice.read(dto);
 		
 		if(vo == null){
 			return;
 		}
-		
+		*/
 		model.addAttribute("MemberVO", vo);
 		
-		if(dto.isUseCookie()){
+		if(vo.isUseCookie()){
+			
+			logger.info("22222222222");
 			
 			int amount = 60*60*24*7;			
 			Date sessionLimit = new Date(System.currentTimeMillis()+(1000*amount));

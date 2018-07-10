@@ -31,11 +31,12 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			session.setAttribute(LOGIN, memberVO);
 			
 			if(request.getParameter("useCookie")!=null){
-				logger.info("나를 기억해줘");
+				logger.info("remember me");
 				Cookie loginCookie = new Cookie("loginCookie", session.getId());
 				loginCookie.setPath("/");
 				loginCookie.setMaxAge(60*60*24*7);
 				response.addCookie(loginCookie);
+				
 			}
 			Object dest = session.getAttribute("dest");
 			response.sendRedirect(dest!=null?(String)dest:"/index");
