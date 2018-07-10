@@ -43,6 +43,10 @@ public class BoardController {
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public void indexGet(BoardVO board, Model model) throws Exception {
 		logger.info("hi!!!!");
+		logger.info("hi!!!!");
+		logger.info("hi!!!!");
+		logger.info("hi!!!!");
+		logger.info("hi!!!!");
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
