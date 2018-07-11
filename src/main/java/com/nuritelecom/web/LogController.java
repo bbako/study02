@@ -34,46 +34,44 @@ import com.nuritelecom.service.MemberService;
 public class LogController {
 
 	private static final Logger logger = LoggerFactory.getLogger(LogController.class);
-	
+
 	@Inject
 	MemberService mservice;
 
-	
+
 	@GetMapping("/login")
 	public void login() throws Exception {
 		logger.info("login one");
 	}
-	
+
 	@PostMapping("/loginPost")
-	public void loginPOST(MemberVO vo,HttpSession session, Model model) throws Exception{
-		
+	public void loginPOST(MemberVO dto,HttpSession session, Model model) throws Exception{
+
 		logger.info("==============================================================================");
 		logger.info("Login Post !!!!!!!!");
-		logger.info(vo.toString());
-		
-		/*MemberVO vo = mservice.read(dto);
-		
-		if(vo == null){
-			return;
-		}
-		*/
+		logger.info(dto.toString());
+
+		MemberVO vo = mservice.login(dto);
+
+		if(vo == null ){return; }
+
 		model.addAttribute("MemberVO", vo);
-		
-		if(vo.isUseCookie()){
-			
-			logger.info("22222222222");
-			
-			int amount = 60*60*24*7;			
+
+		if(dto.isUseCookie()){
+
+			logger.info("remember me checked");
+
+			int amount = 60*60*24*7;
 			Date sessionLimit = new Date(System.currentTimeMillis()+(1000*amount));
-			
-			vo.setSessionKey(session.getId());
-			vo.setSessionLimit(sessionLimit);
-			
-			mservice.keepLogin(vo);
-			
+
+			dto.setSessionKey(session.getId());
+			dto.setSessionLimit(sessionLimit);
+
+			mservice.keepLogin(dto);
+
 		}
-		
+
 	}
-	
+
 
 }

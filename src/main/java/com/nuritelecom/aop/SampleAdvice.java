@@ -16,28 +16,19 @@ import org.springframework.stereotype.Component;
 public class SampleAdvice {
 
 	private static final Logger logger = LoggerFactory.getLogger(SampleAdvice.class);
-	
-	@Before("execution(* com.nuritelecom.service.BoardService*.*(..))")
-	public void startLog(JoinPoint jp) {
-		
-		logger.info("-------------------------------------------------");
-		logger.info("-------------------------------------------------");
-		logger.info(Arrays.toString(jp.getArgs()));
-	}
-	
-	@Around("execution(* com.nuritelecom.service.*.*(..))")
+
+	@Around("execution(* com.nuritelecom.service.BoardService*.*(..))")
 	public Object startLog2(ProceedingJoinPoint pjp) throws Throwable {
 		
 		logger.info("-----------------------------time--------------------");
 		logger.info("-----------------------------time--------------------");
 		long startTime = System.currentTimeMillis();
 		logger.info(Arrays.toString(pjp.getArgs()));
-		
+
 		Object result = pjp.proceed();
-		
+
 		long endTime = System.currentTimeMillis();
 		logger.info(pjp.getSignature().getName()+ " : " + (endTime - startTime));
-		
 		logger.info("-----------------------------endtime--------------------");
 		logger.info("-----------------------------endtime--------------------");
 		

@@ -12,7 +12,7 @@ import com.nuritelecom.domain.MemberVO;
 
 @Repository
 public class MemberDAOImpl implements MemberDAO {
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(MemberDAOImpl.class);
 
 	@Inject
@@ -34,6 +34,11 @@ public class MemberDAOImpl implements MemberDAO {
 	public void keepLogin(MemberVO vo) {
 		session.selectOne(namespace+".keepLogin", vo);
 	}
-	
-	
+
+	@Override
+	public MemberVO login(MemberVO dto) {
+		return 	session.selectOne(namespace + ".login", dto);
+	}
+
+
 }

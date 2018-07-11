@@ -28,5 +28,10 @@ public class MemberServiceImpl implements MemberService {
 		dao.keepLogin(vo);
 	}
 
+	@Override
+	public MemberVO login(MemberVO dto) {
+		return dao.login(dto);
+	}
+
 
 }

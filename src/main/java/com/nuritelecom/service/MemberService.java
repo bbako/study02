@@ -11,4 +11,5 @@ public interface MemberService {
 	public void keepLogin(MemberVO vo);
 
 
+    MemberVO login(MemberVO dto);
 }
