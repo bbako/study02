@@ -34,7 +34,7 @@ public class FileUtil {
          String newFileName = ""; // 업로드 되는 파일명
           
          File dir = new File(path);
-         if(!dir.isDirectory()){
+         if(!dir.exists()){
              dir.mkdir();
          }
           
