@@ -8,27 +8,23 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,800italic,400,700,800">
-    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,700,300">
-    <link type="text/css" rel="stylesheet" href="styles/font-awesome.min.css">
-    <link type="text/css" rel="stylesheet" href="styles/bootstrap.min.css">
-    <link type="text/css" rel="stylesheet" href="styles/animate.css">
-    <link type="text/css" rel="stylesheet" href="styles/main.css">
-    <link type="text/css" rel="stylesheet" href="styles/style-responsive.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
-<body style="background: url('images/bg/bg.png') center center fixed;">
-    
+<body style="background: center center fixed;">
+<div class="col-md-6">
     <div class="page-form">
         <div class="panel panel-blue">
             <div class="panel-body pan">
                 <form action="/log/loginPost" method="post" class="form-horizontal">
                 <div class="form-body pal">
                     <div class="form-group">
-                        <div class="col-md-3"> </div>
-                         <div class="col-md-6" style="margin-top: -100px; ">
-                         	<img src="images/avatar/profile-pic.png" class="img-responsive" />
-                         </div>
-						<div class="col-md-3"> </div>
                         <div class="col-md-12 text-center">
                             <h1>
                                 L O G I N</h1>
@@ -73,6 +69,7 @@
             </div>
         </div>
     </div>
+</div>
     
  <script  src="https://code.jquery.com/jquery-3.2.1.min.js"
   			integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
